@@ -17,6 +17,8 @@ class Eval():
         expression_list = [] # create an array to store the split up expression
         for char in expression_string: # iterate through each char in the expression string
             if char in symbols: # check if the char is in our set of symbols
+                if len(expression_list) > 0 and expression_list[-1] in symbols:
+                    raise ValueError("Invalid string input")
                 expression_list.append(char) # if so add the symbol to our list
             elif char.isdigit(): # otherwise check if our char is a digit
                 # check if the last index of our array is also an int
